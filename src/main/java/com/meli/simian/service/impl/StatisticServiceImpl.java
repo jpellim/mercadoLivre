@@ -19,6 +19,8 @@ import com.meli.simian.service.StatisticService;
 @Service
 public class StatisticServiceImpl implements StatisticService {
 
+	private final static Integer CASAS_PRECISAO = 1;
+	
 	@Autowired
 	private DnaRepository repository;
 
@@ -33,7 +35,7 @@ public class StatisticServiceImpl implements StatisticService {
 
 		final Integer simiansDna = (int) getStream(dna).filter(d -> d.getType() == SIMIAN).count();
 
-		BigDecimal ratio = new BigDecimal(simiansDna).divide(new BigDecimal((humansDna == 0 ? 1 :humansDna)), RoundingMode.HALF_EVEN);
+		BigDecimal ratio = new BigDecimal(simiansDna).divide(new BigDecimal((humansDna == 0 ? 1 :humansDna)), CASAS_PRECISAO, RoundingMode.HALF_UP);
 
 		statistics.setTotalOfSimians(simiansDna);
 		statistics.setTotalOfHumans(humansDna);
