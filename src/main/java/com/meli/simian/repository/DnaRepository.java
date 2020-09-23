@@ -10,5 +10,7 @@ public interface DnaRepository extends CrudRepository<Dna, String> {
 	
 	@Query(value = "{ 'dna.type': ?0  }", count = true)
 	public Integer countDnaByType(DnaType type);
+   
+	public Dna findByDna(String dna);
 
 }

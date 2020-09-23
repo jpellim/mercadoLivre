@@ -33,7 +33,7 @@ public class StatisticServiceImpl implements StatisticService {
 
 		final Integer simiansDna = (int) getStream(dna).filter(d -> d.getType() == SIMIAN).count();
 
-		BigDecimal ratio = new BigDecimal(simiansDna).divide(new BigDecimal(humansDna), RoundingMode.HALF_EVEN);
+		BigDecimal ratio = new BigDecimal(simiansDna).divide(new BigDecimal((humansDna == 0 ? 1 :humansDna)), RoundingMode.HALF_EVEN);
 
 		statistics.setTotalOfSimians(simiansDna);
 		statistics.setTotalOfHumans(humansDna);

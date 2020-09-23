@@ -21,6 +21,10 @@ public class SearchRegistrationServiceImpl implements SearchRegistrationService 
 
 		final String dnaComplete = String.join("", dna);
 
+		if (dnaAlreadyExists(dnaComplete)) {
+			return;
+		}
+	 
 		Dna entity = new Dna();
 		entity.setSequences(dna);
 		entity.setDna(dnaComplete);
@@ -32,6 +36,11 @@ public class SearchRegistrationServiceImpl implements SearchRegistrationService 
 		}
 
 		repository.save(entity);
+	}
+
+	private boolean dnaAlreadyExists(String dnaComplete) {
+		final Dna dna = repository.findByDna(dnaComplete);
+		return (dna != null);
 	}
 
 }
