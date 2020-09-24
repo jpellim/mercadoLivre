@@ -14,7 +14,7 @@ import com.meli.simian.service.impl.SimianServiceImpl;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest 
 public class SimianApplicationTests {
 
 	@Test
@@ -26,7 +26,7 @@ public class SimianApplicationTests {
 	
 	@Mock
 	private SearchRegistrationService searchRegistrationService;
-
+ 
 	@Test
 	public void testDnaIsNotRelatedToSimius() {
 
