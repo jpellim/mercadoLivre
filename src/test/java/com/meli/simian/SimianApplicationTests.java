@@ -4,11 +4,12 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.meli.simian.exception.DnaMatrixIsNotSquareException;
-import com.meli.simian.service.SimianService;
+import com.meli.simian.service.SearchRegistrationService;
 import com.meli.simian.service.impl.SimianServiceImpl;
 
 
@@ -21,7 +22,10 @@ public class SimianApplicationTests {
 	}
 
 	@InjectMocks
-	private final SimianService simianService = new SimianServiceImpl();
+	private final SimianServiceImpl simianService = new SimianServiceImpl();
+	
+	@Mock
+	private SearchRegistrationService searchRegistrationService;
 
 	@Test
 	public void testDnaIsNotRelatedToSimius() {
@@ -34,6 +38,7 @@ public class SimianApplicationTests {
  
 	}
 	
+	
 	@Test
 	public void testDnaIsRelatedToSimiusInHorizontally() {
 
@@ -44,7 +49,7 @@ public class SimianApplicationTests {
 		Assert.assertTrue(isSimian);
  
 	}
-	
+ 
 	@Test
 	public void testDnaIsRelatedToSimiusInHorizontallyStartingAtSecondPosition() {
 
@@ -183,6 +188,7 @@ public class SimianApplicationTests {
 		simianService.isSimian(dna);
     	
     }
+     
 	
 }
 
